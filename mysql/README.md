@@ -3,7 +3,7 @@
 - MySQL は高速性と堅牢性を追及したマルチユーザ・マルチスレッドのＳＱＬデータベースです。
 - 世界で最も人気のあるオープンソースデータベースです。
 
-- ref:[MySQL](https://www.mysql.com/jp/)
+ref:[MySQL](https://www.mysql.com/jp/)
 
 
 ### 用語説明
@@ -108,4 +108,62 @@ mysql> select database();
 +---------------+
 1 row in set (0.00 sec)
 ```
+
+#### 作業ユーザを作成して権限を与える
+
+ユーザを作成する
+
+
+```sql
+create user dbuser@localhost identified by '****';
+```
+
+ユーザ名`dbuser@localhost`に`dot_install`DBに対する操作権限を全て与える
+
+```sql
+grant all on dotinstall_db.* to dbuser@localhost;
+```
+
+ログイン
+
+```sql
+mysql -u dbuser -p
+パスワード入力
+```
+
+ユーザを確認する
+
+```sql
+mysql> select user();
++------------------+
+| user()           |
++------------------+
+| dbuser@localhost |
++------------------+
+1 row in set
+```
+
+データベースを確認する
+
+```sql
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| dotinstall_db      |
++--------------------+
+2 rows in set (0.00 sec)
+```
+
+### ユーザを削除する
+
+※ルートユーザで作業を行う
+
+```sql
+drop user dbuser@localhost
+```
+
+
+
 
