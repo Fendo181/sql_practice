@@ -5,6 +5,19 @@
 
 - ref:[MySQL](https://www.mysql.com/jp/)
 
+
+### 用語説明
+
+- 行:レコード(Record/Row)
+  - データ
+  - 横
+- 列:フィールド(Fiels/Column)
+  - 属性値
+  - 縦
+- SQL(Structured Query Language)
+  - Database や Table 、 Field や Record を扱う言語を SQL （ Structured Query Language ）と呼ぶの
+
+
 ### コマンド
 
 ※Macでの環境でに検証になります。
