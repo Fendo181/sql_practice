@@ -164,6 +164,24 @@ mysql> show databases;
 drop user dbuser@localhost
 ```
 
+#### 外部からSQLを実行する
 
+リダイレククションで実行する
+
+
+```
+mysql -u root < mysql/create_mysql.sql
+```
+
+mysqlサーバに入って`sorce` or `\.`コマンドを実行する
+
+```sql
+mysql> \. ./mysql/create_mysql.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+```
 
 
