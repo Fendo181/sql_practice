@@ -156,7 +156,7 @@ mysql> show databases;
 2 rows in set (0.00 sec)
 ```
 
-### ユーザを削除する
+#### ユーザを削除する
 
 ※ルートユーザで作業を行う
 
