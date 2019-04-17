@@ -219,4 +219,25 @@ mysql> show tables;
 Empty set (0.00 sec)
 ```
 
-#### 
+### データ型について
+
+- Number
+  - int:整数
+  - float:浮動小数
+  - double:倍精度浮動小数点
+  - int unsigned (マイナスの領域は使わず、プラスの領域だけを使う)
+- String
+  - char:固定
+  - varchar:可変長
+  - text:長さがわからない
+- Date/Time
+  - date:日付
+  - time:時間
+  - datetime:日時
+    - `2017-07-22 17:23:33`
+- True/False
+  - boolean　-> tinyint(1)
+    - trueは1(空文字を含むそれ以外の値は全て true になる)
+    - falseは0と管理されれている
+
+ref:[MySQL :: MySQL 5.6 リファレンスマニュアル :: 11 データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
