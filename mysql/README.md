@@ -184,4 +184,39 @@ Query OK, 1 row affected (0.00 sec)
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 ```
 
+#### テーブル一覧を見る
 
+```sql
+mysql> show tables;
++-----------------+
+| Tables_in_myapp |
++-----------------+
+| users           |
++-----------------+
+```
+
+#### テーブル構造を見る
+
+```sql
+mysql> desc users;
++-------+------------------+------+-----+---------+-------+
+| Field | Type             | Null | Key | Default | Extra |
++-------+------------------+------+-----+---------+-------+
+| id    | int(10) unsigned | YES  |     | NULL    |       |
+| name  | varchar(20)      | YES  |     | NULL    |       |
+| score | float            | YES  |     | NULL    |       |
++-------+------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+```
+
+#### テーブルの削除方法
+
+```sql
+mysql> drop table users;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+```
+
+#### 
