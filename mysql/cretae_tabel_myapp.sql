@@ -1,6 +1,5 @@
 -- 存在していたら削除を行う
-
-drop table id exxists users;
+drop table if exists users;
 
 create table users (
     id int unsigned,
