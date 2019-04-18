@@ -241,3 +241,13 @@ Empty set (0.00 sec)
     - falseは0と管理されれている
 
 ref:[MySQL :: MySQL 5.6 リファレンスマニュアル :: 11 データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
+
+### フィールドの属性について
+
+- `not null` : nullは入らない
+- `default` : デフォルト値を設定できる
+- `unique`: 重複した値を許さない
+- `primary key`:レコードを一意に特定できるようなフィールドには、主キーを付けることが推奨されています。
+  - これを入れるだけで、`null`でなく、`unique`(重複しない値)である事が保証されます。
+  - 主キー属性のフィールドには自動的に`UNIQUE` & `NOT NULL`属性がつきます。
+- `auto_increment`:自動で連番にしてくれる
