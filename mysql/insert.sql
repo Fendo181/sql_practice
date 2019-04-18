@@ -5,4 +5,6 @@ insert into users(id,name,score)values
     (3,'kikuchi',5.9),
     (4,'hoge',null);
 
+insert into users(id,name)values(4,'tanaka');
+
 select * from users;
