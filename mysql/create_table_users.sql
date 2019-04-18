@@ -7,8 +7,8 @@ create table users (
     score float
 );
 
--- フィールドの属性を後から追加する
+-- nameカラムの後ろに新しくemailカラムを追加する
 
-alter table users add column email varchar(255);
+alter table users add column email varchar(255) after name;
 
 desc users;
