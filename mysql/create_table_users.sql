@@ -10,5 +10,7 @@ create table users (
 -- nameカラムの後ろに新しくemailカラムを追加する
 
 alter table users add column email varchar(255) after name;
+alter table users drop column score ;
+
 
 desc users;
