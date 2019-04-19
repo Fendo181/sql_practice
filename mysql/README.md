@@ -11,7 +11,7 @@ ref:[MySQL](https://www.mysql.com/jp/)
 - 行:レコード(Record/Row)
   - データ
   - 横
-- 列:フィールド(Fiels/Column)
+- 列:フィールド(Fields/Column)
   - 属性値
   - 縦
 - SQL(Structured Query Language)
@@ -242,7 +242,7 @@ Empty set (0.00 sec)
 
 ref:[MySQL :: MySQL 5.6 リファレンスマニュアル :: 11 データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
 
-### フィールドの属性について
+#### フィールドの属性について
 
 - `not null` : nullは入らない
 - `default` : デフォルト値を設定できる
