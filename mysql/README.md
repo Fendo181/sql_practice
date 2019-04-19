@@ -251,3 +251,40 @@ ref:[MySQL :: MySQL 5.6 リファレンスマニュアル :: 11 データ型](ht
   - これを入れるだけで、`null`でなく、`unique`(重複しない値)である事が保証されます。
   - 主キー属性のフィールドには自動的に`UNIQUE` & `NOT NULL`属性がつきます。
 - `auto_increment`:自動で連番にしてくれる
+
+#### フォールドを後から追加する
+
+- `alter`コマンドを使ってカラムを追加する
+
+```sql
+-- フィールドの属性を後から追加する
+alter table users add column email varchar(255);
+```
+
+- `after`を指定すると、特定のカラムの後ろに追加する事ができる
+
+```sql
+-- フィールドの属性を後から追加する
+alter table users add column email varchar(255) after name;
+```
+
+#### フィールドを後から削除する
+
+```sql
+alter table users drop column score ;
+```
+
+
+#### フィールドのデータの型や名前を変えたい場合
+
+```sql
+alter table users change name user_name varchar(80) default 'nobody';
+```
+
+#### テーブルの名前を変えたい場合
+
+```sql
+alter table users rename persons;
+```
+
+
