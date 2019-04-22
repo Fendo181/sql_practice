@@ -286,5 +286,19 @@ alter table users change name user_name varchar(80) default 'nobody';
 ```sql
 alter table users rename persons;
 ```
+### Select:レコード抽出
 
+- `slect * from table_name`:全件表示
+- `select id,name ftom table_name`:カラムを指定して表示
+- `where`:条件付きで抽出する
+- 論理演算
+   - `<>`
+   - `<=`
+   - `>=`
+   - `<>` or `!=` 等しくない
+- `null`
+  - `is null`:nullか
+  - `is not null`nullではない
+- `where column between X and Y`:`X~Y`の範囲に含まれているか
+- `in`: () の中の値のどれか
 
