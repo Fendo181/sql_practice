@@ -301,4 +301,10 @@ alter table users rename persons;
   - `is not null`nullではない
 - `where column between X and Y`:`X~Y`の範囲に含まれているか
 - `in`: () の中の値のどれか
-
+- `like`:部分一致
+  - `%`:0文字以上のワイルドカード
+    - `%endu%`:enduを含む
+    - `%ですね`:ですねで終わる文字列
+- `binaly`:SQLは大文字、小文字を区別できないが`binaly`演算子を使うと厳密に比較をしてくれる
+- `_`:任意の文字を指定できる
+  - `_e%`:名前の2文字目がeの人
