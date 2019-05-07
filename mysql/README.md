@@ -308,3 +308,8 @@ alter table users rename persons;
 - `binaly`:SQLは大文字、小文字を区別できないが`binaly`演算子を使うと厳密に比較をしてくれる
 - `_`:任意の文字を指定できる
   - `_e%`:名前の2文字目がeの人
+- `order by`:並び替えを行う
+  - `desc`:大きい順
+  - `ask`:小さい順
+- `limit`:件数を絞る
+- `offset`:取得開始地点を指定ずる
