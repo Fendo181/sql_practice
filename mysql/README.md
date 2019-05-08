@@ -313,3 +313,25 @@ alter table users rename persons;
   - `ask`:小さい順
 - `limit`:件数を絞る
 - `offset`:取得開始地点を指定ずる
+
+### Update レコードの更新
+
+```sql
+update users set score = 5.7 where id = 1;
+update users set name = 'tanaka', score = 6.0 where id = 1;
+```
+
+### Delete レコードの削除
+
+全件削除
+
+```sql
+delete from users
+```
+
+スコアが5.0以下のレコードを削除する
+
+```sql
+ delete from users where score < 5.0;
+```
+
