@@ -361,3 +361,11 @@ select rand();
 ```sql
 select * from users order by rand() limit 1;
 ```
+
+### 文字列の演算
+
+- `length`:長さを取得する
+- `substr`:文字を切り取る
+- `upper`:文字列を大文字にする
+- `lower`:小文字にする
+- `concat`:文字列を連結する
