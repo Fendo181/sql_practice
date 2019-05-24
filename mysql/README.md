@@ -369,3 +369,23 @@ select * from users order by rand() limit 1;
 - `upper`:文字列を大文字にする
 - `lower`:小文字にする
 - `concat`:文字列を連結する
+
+
+### enum型
+
+複数の値から、1つだけが格納できるようにする
+MySQL の設定にもよりますが、この中にある値以外をはじくことができます。また内部的には連番で振られているので、`1`や`2`で指定できる
+
+enum型のtableを作成する
+
+```sql
+create table users (
+  id int unsigned primary key auto_increment,
+  name varchar(20),
+  score float,
+  rank enum('gold', 'silver', 'bronze')
+);
+```
+
+
+
