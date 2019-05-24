@@ -14,7 +14,7 @@ insert into users (name, score, rank) values ('taguchi', 5.8, 'silver');
 insert into users (name, score, rank) values ('taguchi', 5.8, 'red');  -- ERROR 1265 (01000): Data truncated for column 'rank' at row 1
 
 
--- rnum型は内部で連番で入る為
+-- enum型は内部で連番で入る為
 select * from users where rank = 2;
 
 select * from users;
