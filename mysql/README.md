@@ -387,5 +387,22 @@ create table users (
 );
 ```
 
+### set柄
+
+複数の値から、複数の値を格納できるようにする
+enumと違って複数入れられる。
+挿入時に順番を変えたとしても、こちらの create table で定義した順番に戻っている。したがって抽出時にはこちらの順番を守りつつ条件を指定してあげる必要があります。
+
+
+```sql
+alter table users add column coins set('gold','silver','bronz')
+insert into users (name, score, coins) values ('taguchi', 5.8, 'silver,gold');
+insert into users (name, score, coins) values ('taguchi', 5.8, 'bronz,gold');
+-- ERROR 1265 (01000): Data truncated for column 'coins' at row 1
+insert into users (name, score, coins) values ('taguchi', 5.8, 'red,gold');
+
+```
+
+
 
 
