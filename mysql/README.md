@@ -404,5 +404,98 @@ insert into users (name, score, coins) values ('taguchi', 5.8, 'red,gold');
 ```
 
 
+### if,case文
+
+if文を使った例
+
+```sql
+-- if文で分岐する
+select
+    name,
+    score,
+    -- 5.0以上だったらOKでそれよりも下だったらNGになる
+    if (score > 5.0 , 'OK' , 'NG' ) as result
+from
+    users;
+```
+
+結果
+
+```sql
++---------+-------+--------+
+| name    | score | result |
++---------+-------+--------+
+| endu    |   5.8 | OK     |
+| koji    |   5.7 | OK     |
+| kikuchi |   4.9 | NG     |
+| hoge    |     1 | NG     |
+| tomita  |  0.28 | NG     |
+| sakita  |     3 | NG     |
++---------+-------+--------+
+```
+
+case文の例
+
+```sql
+-- case文で分岐する
+select
+    name,
+    score,
+    -- 5.0以上だったらOKでそれよりも下だったらNGになる
+    case floor(score) % 2
+        -- 2で割れたら偶数
+        when 0 then '偶数'
+        -- 2で割られなかったら奇数
+        when 1 then '奇数'
+        else NULL
+    end as type
+from
+    users;
+```
+
+結果
+
+```sql
++---------+-------+--------+
+| name    | score | type   |
++---------+-------+--------+
+| endu    |   5.8 | 奇数   |
+| koji    |   5.7 | 奇数   |
+| kikuchi |   4.9 | 偶数   |
+| hoge    |     1 | 奇数   |
+| tomita  |  0.28 | 偶数   |
+| sakita  |     3 | 奇数   |
++---------+-------+--------+
+```
 
 
+case文ではwhenの後直接、条件分岐がかける
+
+```sql
+select
+    name,
+    score,
+    -- 5.0以上だったらOKでそれよりも下だったらNGになる
+    case
+        when score > 5.0 then 'Team-A'
+        when score > 4.0 then 'Team-B'
+        else 'Team-C'
+    end as TeamName
+from
+    users;
+```
+
+結果
+
+```sql
++---------+-------+----------+
+| name    | score | TeamName |
++---------+-------+----------+
+| endu    |   5.8 | Team-A   |
+| koji    |   5.7 | Team-A   |
+| kikuchi |   4.9 | Team-B   |
+| hoge    |     1 | Team-C   |
+| tomita  |  0.28 | Team-C   |
+| sakita  |     3 | Team-C   |
++---------+-------+----------+
+```
