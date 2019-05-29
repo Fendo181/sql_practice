@@ -499,3 +499,90 @@ from
 | sakita  |     3 | Team-C   |
 +---------+-------+----------+
 ```
+
+### 抽象結果で新しくテーブルを作成する
+
+
+`select`で抽出した結果を別のtableとして生成する。
+
+```sql
+-- selectで抽出した結果を別のテーブルにする
+create table users_with_team as
+select
+    id,
+    name,
+    score,
+    -- 5.0以上だったらOKでそれよりも下だったらNGになる
+    case
+        when score > 5.0 then 'Team-A'
+        when score > 4.0 then 'Team-B'
+        else 'Team-C'
+    end as TeamName
+from
+    users;
+
+select * from users_with_team;
+```
+
+結果
+
+```sql
++----+---------+-------+----------+
+| id | name    | score | TeamName |
++----+---------+-------+----------+
+|  1 | endu    |   5.8 | Team-A   |
+|  2 | koji    |   5.7 | Team-A   |
+|  3 | kikuchi |   4.9 | Team-B   |
+|  4 | hoge    |     1 | Team-C   |
+|  5 | tomita  |  0.28 | Team-C   |
+|  6 | sakita  |     3 | Team-C   |
++----+---------+-------+----------+
+```
+
+
+
+また既存のtableもコピーする事ができる。
+
+```sql
+-- users tableをそのままコピーする
+create table uses_copy select * from users;
+select * from uses_copy;
+```
+
+結果
+
+```sql
++----+---------+-------+
+| id | name    | score |
++----+---------+-------+
+|  1 | endu    |   5.8 |
+|  2 | koji    |   5.7 |
+|  3 | kikuchi |   4.9 |
+|  4 | hoge    |     1 |
+|  5 | tomita  |  0.28 |
+|  6 | sakita  |     3 |
++----+---------+-------+
+6 rows in set (0.00 sec)
+```
+
+
+それ以外だとtableの構造だけコピーをしたい時は`like`文だけを使うようにする。
+
+```sql
+-- テーブルの構造だけコピーしたい
+create table users_empty like users;
+desc users_empty;
+```
+
+結果
+
+```sql
++-------+------------------+------+-----+---------+----------------+
+| Field | Type             | Null | Key | Default | Extra          |
++-------+------------------+------+-----+---------+----------------+
+| id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20)      | YES  |     | NULL    |                |
+| score | float            | YES  |     | NULL    |                |
++-------+------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+```
