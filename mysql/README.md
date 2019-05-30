@@ -586,3 +586,44 @@ desc users_empty;
 +-------+------------------+------+-----+---------+----------------+
 3 rows in set (0.00 sec)
 ```
+
+### データの集計処理
+
+- count():集計を行う
+- avg():平均値を取る
+- distinct:重複した値を消して
+
+```sql
+create table users (
+    id int unsigned primary key auto_increment,
+    name varchar(20),
+    score float
+);
+
+insert into users(name,score)values
+    ('endu',5.8),
+    ('koji',null),
+    ('kikuchi',4.9),
+    ('hoge',1.0),
+    ('hoge',.28),
+    ('sakita',3.0)
+;
+
+--  重複するレコードを除く ユニークな値だけを取得する
+select distinct name from users_with_team;
+```
+
+結果
+
+```sql
++---------+
+| name    |
++---------+
+| endu    |
+| koji    |
+| kikuchi |
+| hoge    |
+| sakita  |
++---------+
+5 rows in set (0.00 sec)
+```
