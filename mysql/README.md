@@ -627,3 +627,21 @@ select distinct name from users_with_team;
 +---------+
 5 rows in set (0.00 sec)
 ```
+
+### grouoe by,having
+
+- `groupe by`でグループ集計する事ができる。
+- グルーピングした場合は`wherr`ではなく`having`で条件をつけるようにする
+  - `having` を使う場合は、グループ化に使ったカラムや、集計した値しか条件に使えない。
+- `where`と`groupe by`を両方使うと、最初に`where`文が優先される。
+
+```sql
+-- グループごとで集計を取る
+select sum(score), TeamName from users_with_team group by TeamName;
+
+--降順で
+select sum(score), TeamName from users_with_team group by TeamName desc;
+
+-- スコアが10よりも大きいチームだけを表示する
+select sum(score), TeamName from users_with_team group by TeamName having sum(score) >10;
+```
