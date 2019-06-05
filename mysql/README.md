@@ -645,3 +645,36 @@ select sum(score), TeamName from users_with_team group by TeamName desc;
 -- スコアが10よりも大きいチームだけを表示する
 select sum(score), TeamName from users_with_team group by TeamName having sum(score) >10;
 ```
+
+### サブクエリ
+
+新しくテーブルを作らずに一時的な抽出結果の為の用意する
+
+サブクエリーを使わないパターン
+
+```sql
+-- グループごとで集計を取る
+-- サブクエリを使って新しくテーブルを作らずに集計する
+select
+    sum(t.score),
+    t.TeamName
+from
+    (
+    select
+        id,
+        name,
+        score,
+        -- 5.0以上だったらOKでそれよりも下だったらNGになる
+        case
+            when score > 5.0 then 'Team-A'
+            when score > 4.0 then 'Team-B'
+            else 'Team-C'
+        end as TeamName
+    from
+        users
+    ) as t
+group by
+  t.TeamName;
+````
+
+
