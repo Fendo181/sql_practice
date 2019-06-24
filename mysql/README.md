@@ -731,3 +731,32 @@ start TRANSACTION;
 
 ROLLBACK;
 ```
+
+### index(索引)
+
+`index`をつけるとデータの抽出が速くなる。
+`primary key` には必ず索引が作られます。
+索引は抽出時は早いですが、データの追加や更新処理を行うたびに作り直されるので、そちらの処理が遅くなってしまうというデメリットがある。とはいえ、抽出処理が遅いな、と思ったら索引を付けたり外したりして、パフォーマンスを最適化できるようになっておくと良い。
+
+- indexの追加
+  - `alter table {table_name} add index {index_name} (column);`
+- indexの削除
+  - `alter table {table_name} drop index {index_name};`
+
+```sql
+-- indexを追加する
+alter table users add index index_score (score);
+show index from users\G;
+
+-- その索引が使われているかはkeyで確認できる
+explain
+select * from users where score > 5.0\G;
+
+-- 使ってない場合はnullになる
+explain
+select * from users where name = 'endu'\G;
+
+-- 索引の削除
+alter table users drop index index_score;
+show index from users\G;
+```
