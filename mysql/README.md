@@ -16,7 +16,7 @@ ref:[MySQL](https://www.mysql.com/jp/)
   - 縦
 - SQL(Structured Query Language)
   - Database や Table 、 Field や Record を扱う言語を SQL （ Structured Query Language ）と呼ぶの
-- msyqlのクエリ
+- mysqlのクエリ
   - 大文字、小文字は区別されない
 
 ### コマンド
@@ -387,7 +387,7 @@ create table users (
 );
 ```
 
-### set柄
+### set型
 
 複数の値から、複数の値を格納できるようにする
 enumと違って複数入れられる。
@@ -402,7 +402,6 @@ insert into users (name, score, coins) values ('taguchi', 5.8, 'bronz,gold');
 insert into users (name, score, coins) values ('taguchi', 5.8, 'red,gold');
 
 ```
-
 
 ### if,case文
 
