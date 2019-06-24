@@ -22,7 +22,7 @@ create table comments (
 );
 
 insert into comments(post_id,body)values
-    (1,'comment1!'),
+    (1,'comment1'),
     (2,'comment2'),
     (3,'comment3'),
     (4,'comment4')
