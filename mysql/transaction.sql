@@ -20,6 +20,10 @@ start TRANSACTION;
 UPDATE users set score = score - 1.2 where name = 'endu';
 UPDATE users set score = score + 1.2 where name = 'kikuchi';
 
-COMMIT;
+-- 変更を反映させる
+-- COMMIT;
+
+-- 変更内容を破棄させる
+ROLLBACK;
 
 select * from users;
