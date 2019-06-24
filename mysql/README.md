@@ -708,8 +708,29 @@ character_set_client: utf8
 collation_connection: utf8
 ```
 
+### transaction
 
+一連の処理を必ずまとめて行いたい場合に使います。
 
+変更を反映させる場合
 
+```sql
+start TRANSACTION;
+
+-- 何らかのSQL
+
+-- 変更を反映させる
+COMMIT;
+```
+
+変更を破棄させる
+
+```sql
+start TRANSACTION;
+
+-- 何らかのSQL
+
+ROLLBACK;
+```
 
 
