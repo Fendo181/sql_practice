@@ -1,5 +1,4 @@
 drop table if exists users;
-drop table if exists users_with_team;
 
 create table users (
     id int unsigned primary key auto_increment,
