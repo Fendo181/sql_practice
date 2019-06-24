@@ -686,15 +686,12 @@ viewとは抽出条件に名前を付けてテーブルのように扱うこと�
 -- view(抽出条件に名前をつけてテーブルように扱えるようにする)
 create view top3 as select * from users order by score desc limit 3;
 
-
 -- 表示する
 select * from top3;
 
 -- 一覧を見る
 show tables;
 ```
-
-
 
 ```sql
 --  どうやってそのviewが作られたかを見る
@@ -703,7 +700,7 @@ show create view top3 \G;
 
 結果
 
-```
+```sql
 *************************** 1. row ***************************
                 View: top3
          Create View: CREATE ALGORITHM=UNDEFINED DEFINER=`myapp_user`@`localhost` SQL SECURITY DEFINER VIEW `top3` AS select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`score` AS `score` from `users` order by `users`.`score` desc limit 3
