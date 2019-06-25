@@ -760,3 +760,31 @@ select * from users where name = 'endu'\G;
 alter table users drop index index_score;
 show index from users\G;
 ```
+
+### 内部結合でデータを抽出する
+
+- `inner join`:内部結合を行う
+  - `2 つのテーブルに共通のデータだけを取得する方法`
+
+```sql
+select posts.id, title, comments.body from posts inner join comments on posts.id = comments.post_id
+```
+
+実行結果
+
+```sql
++----+--------+----------------------------+
+| id | title  | body                       |
++----+--------+----------------------------+
+|  1 | title1 | first comment! for         |
+|  1 | title1 | Secound comment! for post1 |
+|  3 | title3 | Third comment3             |
+|  4 | title4 | Yes!Yes!It me 4            |
++----+--------+----------------------------+
+4 rows in set (0.00 sec)
+```
+
+### 外部結合
+
+- `outer join`:外部結合を行う
+  - `2 つのテーブルで一致しないデータも含めてデータを取得する方法になります。`
