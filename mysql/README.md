@@ -788,3 +788,48 @@ select posts.id, title, comments.body from posts inner join comments on posts.id
 
 - `outer join`:外部結合を行う
   - `2 つのテーブルで一致しないデータも含めてデータを取得する方法になります。`
+
+ただし、外部結合はどちらのテーブルを軸にするかで書き方が変わってくる
+
+- `left outer join`
+  - 左側のテーブルを軸にする
+- `right outer join`
+  - 右側のテーブルを軸にする
+
+※outerは省略する事が可能です。
+
+#### LeftJoin(左のテーブルを軸にします)
+
+```sql
+select * from posts left join comments on posts.id = comments.post_id;
+```
+
+実行結果
+
+```sql
+
++----+--------+--------+------+---------+----------------------------+
+| id | title  | body   | id   | post_id | body                       |
++----+--------+--------+------+---------+----------------------------+
+|  1 | title1 | Hello! |    1 |       1 | first comment! for         |
+|  1 | title1 | Hello! |    2 |       1 | Secound comment! for post1 |
+|  3 | title3 | Yes!   |    3 |       3 | Third comment3             |
+|  2 | title2 | Bye!   | NULL |    NULL | NULL                       |
++----+--------+--------+------+
+```
+
+#### Right Join(右側のテーブルを軸にします)
+
+```sql
+select * from posts right join comments on posts.id = comments.post_id;
+```
+
+```sql
++------+--------+--------+----+---------+----------------------------+
+| id   | title  | body   | id | post_id | body                       |
++------+--------+--------+----+---------+----------------------------+
+|    1 | title1 | Hello! |  1 |       1 | first comment! for         |
+|    1 | title1 | Hello! |  2 |       1 | Secound comment! for post1 |
+|    3 | title3 | Yes!   |  3 |       3 | Third comment3             |
+| NULL | NULL   | NULL   |  4 |       4 | Yes!Yes!It me 4            |
+```
