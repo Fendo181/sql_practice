@@ -833,3 +833,26 @@ select * from posts right join comments on posts.id = comments.post_id;
 |    3 | title3 | Yes!   |  3 |       3 | Third comment3             |
 | NULL | NULL   | NULL   |  4 |       4 | Yes!Yes!It me 4            |
 ```
+
+### 外部キー制約
+
+外部キー制約を使うと、`insert`をした時に関連したデータでなければ挿入できないように制限をかける事ができます。しかし外部キー制約を設定してしまうと、関連するデータがある場合にはデータの削除や更新が簡単にはできなくなります。
+
+
+`comments` の `post_id` に関しては `posts` テーブルの `id` に値があるものだけしか挿入できなくなります。加えて、紐付ける`カラム`の型が一致していないといけないので、統一してあげる。
+
+```sql
+alter table comments add constraint fk_comments FOREIGN key (post_id) REFERENCES posts(id);
+```
+
+入れようとするとこんなエラーが出る
+
+```sql
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`myapp`.`#sql-44e_10`, CONSTRAINT `fk_comments` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`))
+```
+
+外部キー制約を削除する
+
+```sql
+alter table comments drop foreigin_key fk_comments;
+```
