@@ -856,3 +856,20 @@ ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint f
 ```sql
 alter table comments drop foreigin_key fk_comments;
 ```
+
+### last_insert_id()を使ってみよう
+
+ MySQL では直前に挿入されたレコードの id を調べる命令が用意されています。
+
+- `last_insert_id()`
+
+です。これを使えば、直前で挿入された`id`が使える。
+関連した複数のテーブルにデータを挿入する場合は `last_insert_id()` をよく使う
+
+```sql
+INSERT into comments (post_id,body) values
+(
+    last_insert_id(), 'first comment for new post'
+)
+;
+```
