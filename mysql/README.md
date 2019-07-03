@@ -892,3 +892,9 @@ after insert
 
 - `after`:実行後に行う
 - `before`:実行前に行う
+
+triggerを削除する
+
+```sql
+drop trigger if exists posts_insert_trigger;
+````
