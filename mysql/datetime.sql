@@ -9,9 +9,6 @@ create table posts (
 );
 
 
-
-
-
 insert into posts(title,body)values
     ('title1','Hello!'),
     ('title2','Bye!'),
