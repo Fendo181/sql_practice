@@ -897,6 +897,30 @@ triggerを削除する
 
 ```sql
 drop trigger if exists posts_insert_trigger;
-````
+```
 
 
+#### 1つのTriggerで2つの処理を行う
+
+複数の処理を1つのtriggerで行う場合は`begin~end;`文を使う。
+加えて、`;`で終わってしまうので、`delimiter`を使って複数のSQLが実行できるようにしておく。
+
+```sql
+-- 区切り文字(//)を変更する
+delimiter //
+create
+    trigger
+        posts_update_trigger
+after update
+    on posts for each row
+begin
+     insert into logs(msg) values('post updated!');
+    --  更新前のメッセージと更新後のメッセージを入れる
+     insert into logs(msg) values(concat(old.title, '->',new.title));
+end;
+//
+
+delimiter ;
+```
+
+- `concat`はmysqlに備わってい組み込み関数で文字列の連結ができる。
