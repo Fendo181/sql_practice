@@ -34,3 +34,6 @@ insert into posts(title,body)values
 
 select * from posts;
 select * from logs;
+
+-- トリガー一覧を表示する
+show TRIGGERS \G;
