@@ -29,3 +29,5 @@ select created,date_add(created, interval 2 week ) from posts;
 
 -- データ・フォーマットを変更する
 select created, date_format(created, '%W %M %Y') from posts;;
+
+
