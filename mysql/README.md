@@ -924,3 +924,16 @@ delimiter ;
 ```
 
 - `concat`はmysqlに備わってい組み込み関数で文字列の連結ができる。
+
+### 作成日時と更新日時を簡単に管理する
+
+- `datetime`で日時を入れてくれる。
+- update時に更新をしてほしいときは以下のように`on update current_timestamp`を入れる。
+
+
+```sql
+created datetime default current_timestamp,
+updated datetime default current_timestamp on update current_timestamp
+```
+
+
