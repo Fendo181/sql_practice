@@ -874,7 +874,7 @@ INSERT into comments (post_id,body) values
 ;
 ```
 
-###Trigger
+### Trigger
 
 テーブルでなんらかの変更が起きたときに、それをトリガーにして何らかの処理をすることができる `Trigger` という仕組みについて学びます。
 
@@ -898,3 +898,5 @@ triggerを削除する
 ```sql
 drop trigger if exists posts_insert_trigger;
 ````
+
+
