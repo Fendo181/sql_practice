@@ -15,13 +15,13 @@ ref:[MySQL](https://www.mysql.com/jp/)
   - 属性値
   - 縦
 - SQL(Structured Query Language)
-  - Database や Table 、 Field や Record を扱う言語を SQL （ Structured Query Language ）と呼ぶの
+  - Database や Table 、 Field や Record を扱う言語を SQL （ Structured Query Language ）と呼ぶ
 - mysqlのクエリ
   - 大文字、小文字は区別されない
 
 ### コマンド
 
-※Macでの環境でに検証になります。
+※Macでの環境での検証になります。
 
 #### mysqlが動いているか確認する
 
@@ -58,7 +58,7 @@ mysql> select user();
 #### データベースの一覧を取得する
 
 ```sh
- show databases
+ mysql> show databases
  +--------------------+
 | Database           |
 +--------------------+
@@ -222,21 +222,21 @@ Empty set (0.00 sec)
 ### データ型について
 
 - Number
-  - int:整数
-  - float:浮動小数
-  - double:倍精度浮動小数点
-  - int unsigned (マイナスの領域は使わず、プラスの領域だけを使う)
+  - `int`:整数
+  - `float`:浮動小数
+  - `double`:倍精度浮動小数点
+  - `int unsigned` (マイナスの領域は使わず、プラスの領域だけを使う)
 - String
-  - char:固定
-  - varchar:可変長
-  - text:長さがわからない
+  - `char`:固定
+  - `varchar`:可変長
+  - `text`:長さがわからない
 - Date/Time
-  - date:日付
-  - time:時間
-  - datetime:日時
+  - `date`:日付
+  - `time`:時間
+  - `datetime`:日時
     - `2017-07-22 17:23:33`
 - True/False
-  - boolean　-> tinyint(1)
+  - `boolean`　-> `tinyint(1)`
     - trueは1(空文字を含むそれ以外の値は全て true になる)
     - falseは0と管理されれている
 
@@ -251,6 +251,8 @@ ref:[MySQL :: MySQL 5.6 リファレンスマニュアル :: 11 データ型](ht
   - これを入れるだけで、`null`でなく、`unique`(重複しない値)である事が保証されます。
   - 主キー属性のフィールドには自動的に`UNIQUE` & `NOT NULL`属性がつきます。
 - `auto_increment`:自動で連番にしてくれる
+
+### Alter:テーブル構造の変更
 
 #### フォールドを後から追加する
 
@@ -292,9 +294,8 @@ alter table users rename persons;
 - `select id,name ftom table_name`:カラムを指定して表示
 - `where`:条件付きで抽出する
 - 論理演算
-   - `<>`
-   - `<=`
-   - `>=`
+   - `x<=y`:xはy以下である
+   - `x>=y`xはy以上である
    - `<>` or `!=` 等しくない
 - `null`
   - `is null`:nullか
@@ -309,8 +310,8 @@ alter table users rename persons;
 - `_`:任意の文字を指定できる
   - `_e%`:名前の2文字目がeの人
 - `order by`:並び替えを行う
-  - `desc`:大きい順
-  - `ask`:小さい順
+  - `desc`:大きい順(降順)
+  - `ask`:小さい順(昇順)
 - `limit`:件数を絞る
 - `offset`:取得開始地点を指定ずる
 
@@ -346,7 +347,7 @@ delete from users
 - `ceil(5.355))`:6
   - 小数点以下を切りあげ
 - `round()`
-　- 乱数
+  - 乱数
 
 ```sql
 select round(5.355); -- 5
@@ -499,7 +500,7 @@ from
 +---------+-------+----------+
 ```
 
-### 抽象結果で新しくテーブルを作成する
+### 抽出結果で新しくテーブルを作成する
 
 
 `select`で抽出した結果を別のtableとして生成する。
@@ -590,7 +591,7 @@ desc users_empty;
 
 - count():集計を行う
 - avg():平均値を取る
-- distinct:重複した値を消して
+- distinct:重複するレコードを除く ユニークな値だけを取得する
 
 ```sql
 create table users (
@@ -630,7 +631,7 @@ select distinct name from users_with_team;
 ### grouoe by,having
 
 - `groupe by`でグループ集計する事ができる。
-- グルーピングした場合は`wherr`ではなく`having`で条件をつけるようにする
+- グルーピングした場合は`where`ではなく`having`で条件をつけるようにする
   - `having` を使う場合は、グループ化に使ったカラムや、集計した値しか条件に使えない。
 - `where`と`groupe by`を両方使うと、最初に`where`文が優先される。
 
@@ -647,13 +648,9 @@ select sum(score), TeamName from users_with_team group by TeamName having sum(sc
 
 ### サブクエリ
 
-新しくテーブルを作らずに一時的な抽出結果の為の用意する
-
-サブクエリーを使わないパターン
+新しくテーブルを作らずに一時的な抽出結果を用意する
 
 ```sql
--- グループごとで集計を取る
--- サブクエリを使って新しくテーブルを作らずに集計する
 select
     sum(t.score),
     t.TeamName
@@ -707,7 +704,7 @@ character_set_client: utf8
 collation_connection: utf8
 ```
 
-### transaction
+### Transaction
 
 一連の処理を必ずまとめて行いたい場合に使います。
 
@@ -798,7 +795,7 @@ select posts.id, title, comments.body from posts inner join comments on posts.id
 
 ※outerは省略する事が可能です。
 
-#### LeftJoin(左のテーブルを軸にします)
+#### Left Join(左のテーブルを軸にします)
 
 ```sql
 select * from posts left join comments on posts.id = comments.post_id;
@@ -1006,7 +1003,3 @@ mysql>\. ./****.backup.sql
 +----+--------+-------------+---------------------+---------------------+
 4 rows in set (0.00 sec)
 ```
-
-
-元に戻っている！
-
