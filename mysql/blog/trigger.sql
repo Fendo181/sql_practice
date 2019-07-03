@@ -24,7 +24,6 @@ after insert
     on posts for each row
         insert into logs(msg) values('post add');
 
-
 insert into posts(title,body)values
     ('title1','Hello!'),
     ('title2','Bye!'),

@@ -873,3 +873,22 @@ INSERT into comments (post_id,body) values
 )
 ;
 ```
+
+###Trigger
+
+テーブルでなんらかの変更が起きたときに、それをトリガーにして何らかの処理をすることができる `Trigger` という仕組みについて学びます。
+
+ex)`posts`テーブルにinsertが走ったら`logs`テーブルにメッセージが入る`posts_insert_trigger`トリガーを作成する
+
+```sql
+create
+    trigger
+        posts_insert_trigger
+after insert
+    on posts for each row
+        insert into logs(msg) values('post add');
+
+```
+
+- `after`:実行後に行う
+- `before`:実行前に行う
