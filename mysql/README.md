@@ -936,4 +936,24 @@ created datetime default current_timestamp,
 updated datetime default current_timestamp on update current_timestamp
 ```
 
+### 日時計算を行う
+
+- `date_add()`を使えば、日時計算を自動でやってくれる。
+
+```sql
+-- 14日を足す
+select created,date_add(created, interval 14 day ) from posts;
+-- 2週間追加する
+select created,date_add(created, interval 2 week ) from posts;
+```
+
+- `date_format`を使えば、日時の時間のフォーマットを変更できる。
+
+```sql
+select created, date_format(created, '%W %M %Y') from posts;;
+```
+
+mysqlのマニュアル
+ref:[MySQL :: MySQL 5.6 リファレンスマニュアル :: 12.7 日付および時間関数](https://dev.mysql.com/doc/refman/5.6/ja/date-and-time-functions.html)
+
 
