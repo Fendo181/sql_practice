@@ -338,20 +338,20 @@ delete from users
 
 ### 数値計算
 
-- `round(5.355)`:5
+- `rand(5.355)`:5
   - 四捨五入
-- `round(5.355,1)`:5.4
+- `rand(5.355,1)`:5.4
   - 小数点 1 桁目で丸めたい場合
 - `floor(5.355)`:5
   - 小数点以下切り捨てにできる
 - `ceil(5.355))`:6
   - 小数点以下を切りあげ
-- `round()`
+- `rand()`
   - 乱数
 
 ```sql
-select round(5.355); -- 5
-select round(5.355, 1); -- 5.4
+select rand(5.355); -- 5
+select rand(5.355, 1); -- 5.4
 select floor(5.833); -- 5
 select ceil(5.238); -- 6
 select rand();
