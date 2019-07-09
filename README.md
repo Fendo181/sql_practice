@@ -6,6 +6,11 @@
 
 - 書籍だと`SQUAT`というJava製のソフトウェアがあるが、社内でも使っているし`Sequel Pro`を使って実際にDBやSQLをいじっていく。
   - ref:https://www.sequelpro.com/
+  
+  
+### 基礎文法
+
+- https://github.com/Fendo181/sql_practice/tree/master/mysql
 
 ### 参考資料
 
