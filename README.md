@@ -10,6 +10,7 @@
   
 ### 基礎文法
 
+- [MySQL 基礎文法 - Qiita](https://qiita.com/Fendo181/items/2be9a0f28fb0805794b0)
 - https://github.com/Fendo181/sql_practice/tree/master/mysql
 
 ### 参考資料
